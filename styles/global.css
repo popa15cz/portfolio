@@ -737,6 +737,10 @@ button {
     font-size: 0.9rem;
 }
 
+.footer-inner a {
+    border-bottom: 1px solid var(--muted);
+}
+
 
 /* -------------------------
    MOBILE
