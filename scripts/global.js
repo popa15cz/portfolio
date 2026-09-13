@@ -39,3 +39,24 @@ if (menuToggle && siteNav) {
 		}
 	});
 }
+
+const animatedSections = document.querySelectorAll(".section");
+
+if ("IntersectionObserver" in window) {
+	const sectionObserver = new IntersectionObserver((entries, observer) => {
+		entries.forEach((entry) => {
+			if (!entry.isIntersecting) {
+				return;
+			}
+
+			entry.target.classList.add("is-visible");
+			observer.unobserve(entry.target);
+		});
+	}, {
+		threshold: 0.30
+	});
+
+	animatedSections.forEach((section) => sectionObserver.observe(section));
+} else {
+	animatedSections.forEach((section) => section.classList.add("is-visible"));
+}

@@ -1,0 +1,687 @@
+:root {
+    --paper: #d9d8ce;
+    --border: #303735;
+    --accent: #d9364f;
+}
+
+.aviation-page {
+    color: var(--paper);
+}
+
+
+.timeline-label,
+.card-label,
+.stat-label {
+    color: var(--accent);
+    font-size: 0.67rem;
+    letter-spacing: 0.12em;
+}
+
+.timeline-content p:last-child,
+.card-body > p:not(.card-label),
+.simulation-copy > p {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+/* Journey */
+
+.timeline {
+    position: relative;
+    max-width: 920px;
+    margin: 120px auto 0;
+}
+
+.timeline::before {
+    position: absolute;
+    top: 12px;
+    bottom: 30px;
+    left: 33.5%;
+    width: 1px;
+    background: var(--border);
+    content: "";
+}
+
+.timeline-item {
+    display: grid;
+    grid-template-columns: 28% 11% 1fr;
+    min-height: 175px;
+}
+
+.timeline-year {
+    color: #6c7470;
+    font-size: clamp(2.5rem, 5vw, 4.4rem);
+    line-height: 0.9;
+    letter-spacing: -0.09em;
+}
+
+.timeline-node {
+    position: relative;
+    z-index: 1;
+}
+
+.timeline-node span {
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin-top: 4px;
+    border: 1px solid var(--accent);
+    background: var(--bg);
+    transform: rotate(45deg);
+}
+
+.timeline-content {
+    max-width: 390px;
+    padding-bottom: 58px;
+}
+
+.timeline-label,
+.card-label,
+.stat-label {
+    margin-bottom: 13px;
+}
+
+.timeline-content h3 {
+    margin-bottom: 10px;
+    font-size: 1.38rem;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+}
+
+.timeline-content p:last-child {
+    font-size: 0.86rem;
+}
+
+.timeline-future .timeline-year {
+    color: var(--accent);
+}
+
+.timeline-future .timeline-node span {
+    border-color: var(--accent);
+}
+
+.timeline-item > *,
+.education-card,
+.flying-title > *,
+.flying-image,
+.hours-block > *,
+.simulation-copy > *,
+.simulation-copy .sim-list div {
+    opacity: 0;
+}
+
+.is-visible .timeline-item > *,
+.is-visible .education-card,
+.is-visible .flying-title > *,
+.is-visible .flying-image,
+.is-visible .hours-block > *,
+.is-visible .simulation-copy > *,
+.is-visible .simulation-copy .sim-list div {
+    animation: aviation-reveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.is-visible .timeline-item:nth-child(1) > * {
+    animation-delay: 0.15s;
+}
+
+.is-visible .timeline-item:nth-child(2) > * {
+    animation-delay: 0.3s;
+}
+
+.is-visible .timeline-item:nth-child(3) > * {
+    animation-delay: 0.45s;
+}
+
+.is-visible .timeline-item:nth-child(4) > * {
+    animation-delay: 0.6s;
+}
+
+.education-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.education-card {
+    position: relative;
+    display: flex;
+    min-height: 300px;
+    padding: 25px 28px 30px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #181d1c;
+}
+
+.card-symbol {
+    position: absolute;
+    top: 55px;
+    right: 33px;
+    color: var(--accent);
+    font-size: 3.3rem;
+    font-weight: 300;
+}
+
+.card-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.card-body h3 {
+    margin-bottom: 17px;
+    font-size: clamp(2rem, 4vw, 3.45rem);
+    line-height: 0.95;
+    letter-spacing: -0.08em;
+}
+
+.card-body > p:not(.card-label) {
+    max-width: 385px;
+    margin-bottom: 25px;
+    font-size: 0.84rem;
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: auto;
+}
+
+.tag-list span {
+    padding: 7px 9px;
+    border: 1px solid rgba(217, 216, 206, 0.21);
+    color: #abb1a8;
+    font-family: "DM Mono", monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+}
+
+.is-visible .education-card:first-child {
+    animation-delay: 0.15s;
+}
+
+.is-visible .education-card:last-child {
+    animation-delay: 0.30s;
+}
+
+/* Flying and simulation */
+.flying-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.flying-title {
+    display: flex;
+    align-self: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 22px;
+    text-align: center;
+}
+
+.flying-title h2 {
+    color: var(--text);
+    font-size: clamp(5rem, 10vw, 6rem);
+    line-height: 0.78;
+    letter-spacing: -0.11em;
+    overflow-wrap: anywhere;
+}
+
+.flying-title p {
+    max-width: 290px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.75;
+}
+
+.flying-image {
+    aspect-ratio: 3 / 4;
+    margin: 0 auto;
+    max-width: 75%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.simulation-copy > p {
+    font-size: 0.92rem;
+}
+
+.simulation-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+}
+
+.hours-block {
+    align-self: center;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.hours {
+    margin-top: 28px;
+    color: var(--accent);
+    font-size: clamp(5rem, 10vw, 6rem);
+    font-weight: 700;
+    line-height: 0.78;
+    letter-spacing: -0.1em;
+}
+
+.hours-unit {
+    margin-top: 20px;
+    color: var(--muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.23em;
+}
+
+.simulation-copy > p {
+    max-width: 390px;
+    margin-bottom: 45px;
+}
+
+.is-visible .flying-title {
+    animation-delay: 0.15s;
+}
+
+.is-visible .flying-image {
+    animation-delay: 0.3s;
+}
+
+.is-visible .hours-block .stat-label {
+    animation-delay: 0.15s;
+}
+
+.is-visible .simulation-copy > p {
+    animation-delay: 0.3s;
+}
+
+.is-visible .simulation-copy .sim-list {
+    animation-delay: 0.45s;
+}
+
+.sim-list {
+    border-top: 1px solid var(--border);
+}
+
+.sim-list div {
+    display: grid;
+    grid-template-columns: 45px 1fr;
+    gap: 14px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.sim-list span {
+    color: var(--accent);
+    font-size: 0.64rem;
+}
+
+.sim-list strong {
+    font-size: 0.86rem;
+    font-weight: 500;
+}
+
+.cockpit-main-photo {
+    margin: 0;
+}
+
+.cockpit-main-photo img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 2.15 / 1;
+    object-fit: cover;
+    object-position: center 54%;
+    border-radius: 5px;
+}
+
+@keyframes aviation-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.985);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.cockpit-main-photo img,
+.cockpit-main-photo figcaption,
+.cockpit-gallery img,
+.cockpit-gallery figcaption,
+.cockpit-copy p {
+    opacity: 0;
+}
+
+.is-visible .cockpit-main-photo img,
+.is-visible .cockpit-main-photo figcaption,
+.is-visible .cockpit-gallery img,
+.is-visible .cockpit-gallery figcaption,
+.is-visible .cockpit-copy p {
+    animation: aviation-reveal 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.is-visible .cockpit-main-photo img {
+    animation-delay: 0.15s;
+}
+
+.is-visible .cockpit-gallery figure:first-child {
+    animation-delay: 0.3s;
+}
+
+.is-visible .cockpit-gallery figure:last-child {
+    animation-delay: 0.45s;
+}
+
+.is-visible .cockpit-copy p {
+    animation-delay: 0.6s;
+}
+
+.cockpit-main-photo figcaption,
+.cockpit-gallery figcaption {
+    margin-top: 12px;
+    color: #6c7470;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+}
+
+.cockpit-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    margin-top: 58px;
+}
+
+.cockpit-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: start;
+}
+
+.cockpit-gallery figure {
+    margin: 0;
+}
+
+.cockpit-gallery img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1.12;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.cockpit-copy {
+    max-width: 520px;
+}
+
+.cockpit-copy p {
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.8;
+}
+
+.cockpit-copy p + p {
+    margin-top: 22px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .timeline-item > *,
+    .education-card,
+    .flying-title > *,
+    .flying-image,
+    .hours-block > *,
+    .simulation-copy > *,
+    .simulation-copy .sim-list div,
+    .cockpit-main-photo img,
+    .cockpit-main-photo figcaption,
+    .cockpit-gallery img,
+    .cockpit-gallery figcaption,
+    .cockpit-copy p,
+    .future-section::before,
+    .future-section h2,
+    .future-statement,
+    .future-section .progression > div {
+        opacity: 1;
+        animation: none;
+    }
+}
+
+/* Future */
+
+.future-section {
+    position: relative;
+    overflow: hidden;
+    padding: 120px 0;
+    background: var(--paper);
+    color: var(--bg);
+    margin-top: 200px;
+    opacity: 1;
+}
+
+.future-section.is-visible {
+    animation: none;
+    transform: none;
+}
+
+.future-section::before,
+.future-section h2,
+.future-statement,
+.future-section .progression > div {
+    opacity: 0;
+}
+
+.is-visible.future-section::before,
+.is-visible.future-section h2,
+.is-visible.future-section .future-statement,
+.is-visible.future-section .progression > div {
+    animation: aviation-reveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.is-visible.future-section::before {
+    animation-delay: 0.15s;
+}
+
+.is-visible.future-section h2 {
+    animation-delay: 0.30s;
+}
+
+.is-visible.future-section .future-statement {
+    animation-delay: 0.45s;
+}
+
+.is-visible.future-section .progression > div:nth-child(1) {
+    animation-delay: 0.60s;
+}
+
+.is-visible.future-section .progression > div:nth-child(3) {
+    animation-delay: 0.75s;
+}
+
+.is-visible.future-section .progression > div:nth-child(5) {
+    animation-delay: 0.90s;
+}
+
+.is-visible.future-section .progression > div:nth-child(7) {
+    animation-delay: 1.05s;
+}
+
+.future-section::before {
+    position: absolute;
+    top: 55px;
+    right: -25px;
+    color: rgba(16, 19, 19, 0.08);
+    content: "FLIGHT PLAN";
+    font-size: clamp(5rem, 17vw, 16rem);
+    font-weight: 800;
+    letter-spacing: -0.1em;
+    white-space: nowrap;
+}
+
+.future-inner {
+    position: relative;
+    z-index: 1;
+}
+
+.future-section h2 {
+    margin-top: 70px;
+    font-size: clamp(5rem, 15vw, 13rem);
+    line-height: 0.77;
+    letter-spacing: -0.11em;
+}
+
+.future-statement {
+    max-width: 470px;
+    margin: 46px 0 105px 25%;
+    font-size: clamp(1.2rem, 2vw, 1.7rem);
+    line-height: 1.25;
+    letter-spacing: -0.04em;
+}
+
+.progression {
+    display: grid;
+    grid-template-columns: 1fr 0.32fr 1fr 0.32fr 1fr 0.32fr 1.2fr;
+    align-items: center;
+}
+
+.progression > div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.progression div span,
+.progression small {
+    color: #737d79;
+}
+
+.progression div span {
+    font-size: 0.62rem;
+}
+
+.progression strong {
+    font-size: clamp(1.35rem, 3vw, 2.4rem);
+    letter-spacing: -0.07em;
+}
+
+.progression small {
+    font-family: "DM Mono", monospace;
+    font-size: 0.57rem;
+    letter-spacing: 0.08em;
+}
+
+.progression i {
+    height: 1px;
+    background: rgba(16, 19, 19, 0.32);
+}
+
+.progression-end {
+    color: var(--accent);
+}
+
+.site-footer {
+    margin-top: 0;
+}
+
+@media (max-width: 800px) {
+    .aviation-page main {
+        padding-top: 66px;
+    }
+
+    .scroll-cue {
+        right: 24px;
+        bottom: 8%;
+    }
+
+    .simulation-layout {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .timeline {
+        margin-top: 78px;
+    }
+
+    .timeline::before {
+        left: 80px;
+    }
+
+    .timeline-item {
+        grid-template-columns: 65px 30px 1fr;
+        min-height: 200px;
+    }
+
+    .timeline-year {
+        font-size: 1.4rem;
+        letter-spacing: -0.06em;
+    }
+
+    .timeline-content {
+        padding-bottom: 48px;
+    }
+
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .education-card {
+        min-height: 420px;
+    }
+
+    .flying-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding-block: 24px 8px;
+    }
+
+    .flying-title {
+        position: static;
+        gap: 16px;
+        padding-top: 0;
+    }
+
+    .flying-title p {
+        max-width: 520px;
+        color: var(--muted);
+        font-size: 0.88rem;
+        line-height: 1.7;
+    }
+
+    .simulation-layout {
+        gap: 70px;
+    }
+
+    .cockpit-main-photo img {
+        aspect-ratio: 1.3 / 1;
+    }
+
+    .cockpit-details {
+        grid-template-columns: 1fr;
+        gap: 42px;
+        margin-top: 42px;
+    }
+
+    .cockpit-copy {
+        max-width: 620px;
+    }
+
+    .future-section h2 {
+        margin-top: 55px;
+    }
+
+    .future-statement {
+        margin: 42px 0 70px;
+    }
+
+    .progression {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .progression i {
+        width: 1px;
+        height: 28px;
+        margin-left: 9px;
+    }
+}
