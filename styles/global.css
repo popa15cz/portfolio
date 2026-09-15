@@ -368,7 +368,7 @@ button {
     margin-top: 32px;
 
     font-family: "DM Mono", monospace;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .hero-intro {
@@ -503,6 +503,10 @@ button {
     letter-spacing: -0.03em;
 }
 
+.area-card h3.small {
+    font-size: 1.25rem;
+}
+
 .area-card p {
     max-width: 300px;
 
@@ -577,7 +581,7 @@ button {
 .project-content h3 {
     margin-bottom: 8px;
 
-    font-size: 1.55rem;
+    font-size: 1.5rem;
     letter-spacing: -0.03em;
 }
 
