@@ -314,7 +314,7 @@
 
 .flying-title h2 {
     color: var(--text);
-    font-size: clamp(5rem, 10vw, 6rem);
+    font-size: clamp(3rem, 15vw, 6rem);
     line-height: 0.78;
     letter-spacing: -0.11em;
     overflow-wrap: anywhere;
@@ -686,16 +686,7 @@
     color: var(--accent);
 }
 
-@media (max-width: 800px) {
-    .aviation-page main {
-        padding-top: 66px;
-    }
-
-    .scroll-cue {
-        right: 24px;
-        bottom: 8%;
-    }
-
+@media (max-width: 1000px) {
     .simulation-layout {
         grid-template-columns: 1fr;
         gap: 28px;
