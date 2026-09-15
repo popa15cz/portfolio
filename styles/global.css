@@ -73,6 +73,29 @@ button {
     font-family: "DM Mono", monospace;
 }
 
+.copy-toast {
+    position: fixed;
+    top: 75%;
+    left: 50%;
+    z-index: 200;
+    padding: 12px 16px;
+    border: 1px solid #69e39a;
+    border-radius: var(--radius);
+    background: #237a4a;
+    color: #f2fff5;
+    font-family: "DM Mono", monospace;
+    font-size: 0.82rem;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -12px);
+    transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.copy-toast.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
 .eyebrow,
 .section-label {
     font-family: "DM Mono", monospace;
@@ -214,6 +237,39 @@ button {
 .section.is-visible {
     animation: hero-enter 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     animation-delay: 0.2s;
+}
+
+.area-card,
+.project {
+    opacity: 0;
+}
+
+.is-visible .area-card,
+.is-visible .project {
+    animation: hero-enter 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.is-visible .area-card:nth-child(1),
+.is-visible .project:nth-child(1) {
+    animation-delay: 0.15s;
+}
+
+.is-visible .area-card:nth-child(2),
+.is-visible .project:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.is-visible .area-card:nth-child(3),
+.is-visible .project:nth-child(3) {
+    animation-delay: 0.45s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .area-card,
+    .project {
+        opacity: 1;
+        animation: none;
+    }
 }
 
 
@@ -388,10 +444,18 @@ button {
 }
 
 .hero-image {
-    background: url("/images/aviation_background.webp") center / cover no-repeat;
-    filter: opacity(0.5);
     position: absolute;
     inset: 0;
+}
+
+.hero-image.aviation {
+    background: url("/images/aviation_background.webp") center / cover no-repeat;
+    filter: opacity(0.5);
+}
+
+.hero-image.photography {
+    background: url("/images/photography_background.webp") center / cover no-repeat;
+    filter: opacity(0.5);
 }
 
 
@@ -408,20 +472,13 @@ button {
 
 .area-card {
     position: relative;
-
-    min-height: 310px;
     padding: 28px;
     border: 1px solid var(--border);
-
     display: flex;
     flex-direction: column;
     gap: 10px;
-
     background: var(--bg);
-
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .area-image {
@@ -430,7 +487,7 @@ button {
     height: 120px;
     display: block;
     margin-inline: auto;
-    border-radius: 5px;
+    border-radius: 3px;
 
     object-fit: cover;
 }
@@ -453,6 +510,13 @@ button {
     font-size: 0.88rem;
 }
 
+.area-iwt {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}
+
 .card-arrow {
     position: absolute;
     bottom: 26px;
@@ -465,6 +529,13 @@ button {
 
 .area-card:hover .card-arrow {
     transform: translate(3px, -3px);
+}
+
+.small-label {
+    color: var(--muted);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
 }
 
 
@@ -494,7 +565,7 @@ button {
     height: 120px;
     display: block;
     margin-inline: auto;
-    border-radius: 5px;
+    border-radius: 3px;
 
     object-fit: cover;
 }
@@ -531,8 +602,8 @@ button {
 .text-paragraph-inner {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 28px;
-    margin-top: 8px;
+    gap: 24px;
+    margin-top: 24px;
 }
 
 .text-paragraph-inner > .section-label {
@@ -540,10 +611,6 @@ button {
     font-size: clamp(1.6rem, 3vw, 2.2rem);
     line-height: 1.1;
     letter-spacing: 0;
-}
-
-.text-paragraph-inner div p {
-    margin-top: 20px;
 }
 
 .text-paragraph-inner p:not(.section-label) {
@@ -556,15 +623,11 @@ button {
 .text-link {
     display: inline-flex;
     gap: 10px;
-
-    margin-top: 28px;
-
     border-bottom: 1px solid var(--accent);
-
     padding-bottom: 3px;
-
     font-size: 0.8rem;
     font-weight: 700;
+    max-width: max-content;
 }
 
 .text-link span {
@@ -602,6 +665,139 @@ button {
 
 .footer-inner a {
     border-bottom: 1px solid var(--muted);
+}
+
+
+/* -------------------------
+   LIGHTBOX
+------------------------- */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: grid;
+    place-items: center;
+    padding: 28px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.lightbox.is-open {
+    visibility: visible;
+    opacity: 1;
+}
+
+.lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 7, 7, 0.92);
+}
+
+.lightbox-dialog {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    gap: 14px;
+    max-width: min(1200px, 100%);
+    max-height: 100%;
+}
+
+.lightbox-image {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: calc(100vh - 118px);
+    object-fit: contain;
+    cursor: zoom-in !important;
+    border-radius: 3px;
+    user-select: none;
+    transition: transform 0.2s ease;
+}
+
+.lightbox-image.is-zoomed {
+    cursor: zoom-out !important;
+    touch-action: none;
+}
+
+.lightbox-image.is-dragging {
+    cursor: grabbing !important;
+    transition: none;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    z-index: 1;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus-visible {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.lightbox-close:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+.lightbox-controls {
+    position: fixed;
+    bottom: 12px;
+    left: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transform: translateX(-50%);
+}
+
+.lightbox-previous,
+.lightbox-next {
+    width: 42px;
+    height: 36px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.lightbox-previous:hover,
+.lightbox-previous:focus-visible,
+.lightbox-next:hover,
+.lightbox-next:focus-visible {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.lightbox-previous:disabled,
+.lightbox-next:disabled {
+    cursor: default;
+    opacity: 0.35;
+}
+
+.lightbox-counter {
+    min-width: 52px;
+    color: var(--muted);
+    font-family: "DM Mono", monospace;
+    font-size: 0.78rem;
+    text-align: center;
 }
 
 

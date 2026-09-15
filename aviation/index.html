@@ -6,14 +6,14 @@
     <meta name="theme-color" content="#101313">
     <meta name="description" content="Kristián Píštěk's aviation journey, flight training and long-term path toward professional aviation.">
 
-    <title>Aviation — Kristián Píštěk</title>
+    <title>Aviation | Kristián Píštěk</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/styles/global.css">
-    <link rel="stylesheet" href="/styles/aviation.css">
+    <link rel="stylesheet" href="/styles/areas.css">
 </head>
 <body class="aviation-page">
 <header class="site-header">
@@ -33,19 +33,19 @@
             <a class="active" href="/aviation">Aviation</a>
             <a href="/software-development">Software Development</a>
             <a href="/photography">Photography</a>
-            <a href="/contact">Contact Me</a>
+            <a href="/contact">Contact</a>
         </nav>
     </div>
 </header>
 
 <main>
     <section class="hero shell">
-        <div class="hero-image" role="img" aria-label="View from a glider cockpit on final approach"></div>
+        <div class="hero-image aviation" role="img" aria-label="Photo of an aircraft"></div>
         <p class="eyebrow mono">JOURNEY · 2026</p>
         <h1>
             Aviation
         </h1>
-        <p class="hero-subtitle">Flight Training · High School · Flight Simulation</p>
+        <p class="hero-subtitle">Pilot Training · High School · Flight Simulator</p>
         <p class="hero-intro">From SPL training to professional commercial flying.</p>
 
         <a class="scroll-cue mono" href="#journey" aria-label="Scroll to aviation journey"><span>SCROLL TO EXPLORE</span><i></i></a>
@@ -131,7 +131,9 @@
                 <p>The glider pilot training is where aviation became physical for me. After years of being fascinated by aircraft from the ground and through flight simulation, I finally began experiencing flight from the cockpit myself.</p>
                 <p>I am currently training as a glider pilot at a local aeroclub, primarily flying the L-13 Blaník.</p>
             </div>
-            <img class="flying-image" src="/images/aviation_l13.webp" alt="A glider L13 taking off by winch">
+            <figure class="flying-image-frame">
+                <img class="flying-image" data-lightbox-gallery="flying" src="/images/galleries/aviation/small/1.webp" alt="A glider L13 taking off by winch">
+            </figure>
         </div>
     </section>
 
@@ -139,7 +141,7 @@
         <div class="simulation-layout">
             <div class="hours-block">
                 <p class="mono stat-label">ESTIMATED FLIGHT SIMULATOR TIME</p>
-                <p class="hours">~6,000</p>
+                <p class="hours">~6 000</p>
                 <p class="hours-unit mono">HOURS</p>
             </div>
             <div class="simulation-copy">
@@ -158,18 +160,24 @@
 
     <section class="section shell" id="home-cockpit">
         <figure class="cockpit-main-photo">
-            <img src="/images/homecockpit_2.webp" alt="Home cockpit built from wood with a yoke, throttle and instrument displays">
+            <div class="cockpit-image-frame">
+                <img data-lightbox-gallery="home-cockpit" src="/images/galleries/aviation/small/2.webp" alt="Home cockpit built from wood with a yoke, throttle and instrument displays">
+            </div>
             <figcaption class="mono">CURRENT STATE</figcaption>
         </figure>
 
         <div class="cockpit-details">
             <div class="cockpit-gallery">
                 <figure>
-                    <img src="/images/homecockpit_3.webp" alt="Close-up of flight instruments and gauges in the home cockpit">
+                    <div class="cockpit-image-frame">
+                        <img data-lightbox-gallery="home-cockpit" src="/images/galleries/aviation/small/3.webp" alt="Close-up of flight instruments and gauges in the home cockpit">
+                    </div>
                     <figcaption class="mono">WHEN STARTED</figcaption>
                 </figure>
                 <figure>
-                    <img src="/images/homecockpit_4.webp" alt="Aviation-themed view from the cockpit">
+                    <div class="cockpit-image-frame">
+                        <img data-lightbox-gallery="home-cockpit" src="/images/galleries/aviation/small/4.webp" alt="Aviation-themed view from the cockpit">
+                    </div>
                     <figcaption class="mono">OLD HOME COCKPIT</figcaption>
                 </figure>
             </div>
