@@ -807,8 +807,8 @@ button {
 
 @media (max-width: 1000px) {
     .scroll-cue {
-        right: 3%;
-        bottom: 3%;
+        right: 2%;
+        bottom: 2%;
     }
 
     .shell {
