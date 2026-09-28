@@ -29,7 +29,7 @@
 .timeline {
     position: relative;
     max-width: 920px;
-    margin: 120px auto 0;
+    margin: 0 auto;
 }
 
 .timeline::before {
@@ -165,9 +165,13 @@
 .is-visible .photo-tile:nth-child(13) { animation-delay: 0.80s; }
 .is-visible .photo-tile:nth-child(14) { animation-delay: 0.86s; }
 .is-visible .photo-tile:nth-child(15) { animation-delay: 0.92s; }
+.is-visible .photo-tile:nth-child(16) { animation-delay: 0.98s; }
+.is-visible .photo-tile:nth-child(17) { animation-delay: 1.04s; }
+.is-visible .photo-tile:nth-child(18) { animation-delay: 1.10s; }
+.is-visible .photo-tile:nth-child(19) { animation-delay: 1.16s; }
 
 .timeline-item > *,
-.education-card,
+.project-card,
 .flying-title > *,
 .flying-image,
 .hours-block > *,
@@ -177,7 +181,7 @@
 }
 
 .is-visible .timeline-item > *,
-.is-visible .education-card,
+.is-visible .project-card,
 .is-visible .flying-title > *,
 .is-visible .flying-image,
 .is-visible .hours-block > *,
@@ -218,13 +222,13 @@
     animation-delay: 1.2s;
 }
 
-.education-grid {
+.project-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 18px;
 }
 
-.education-card {
+.project-card {
     position: relative;
     display: flex;
     min-height: 300px;
@@ -235,6 +239,14 @@
     transition: background 0.2s ease, border-color 0.2s ease;
 }
 
+@media (min-width: 1001px) {
+    .project-grid > .project-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: calc((100% - 18px) / 2);
+    }
+}
+
 .just-gauges-card:hover {
     border-color: var(--accent);
     background: #202625;
@@ -242,7 +254,7 @@
 
 .card-symbol {
     position: absolute;
-    top: 55px;
+    top: 25px;
     right: 33px;
     color: var(--accent);
     font-size: 3.3rem;
@@ -273,9 +285,37 @@
     font-size: 0.84rem;
 }
 
+.project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin: auto 0 24px;
+}
+
+.project-meta div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+}
+
+.project-meta .mono {
+    color: #abb1a8;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+}
+
+.project-meta strong {
+    color: var(--accent);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
 .tag-list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 7px;
     margin-top: auto;
 }
@@ -289,11 +329,11 @@
     letter-spacing: 0.08em;
 }
 
-.is-visible .education-card:first-child {
+.is-visible .project-card:first-child {
     animation-delay: 0.15s;
 }
 
-.is-visible .education-card:last-child {
+.is-visible .project-card:last-child {
     animation-delay: 0.30s;
 }
 
@@ -533,7 +573,7 @@
 
 @media (prefers-reduced-motion: reduce) {
     .timeline-item > *,
-    .education-card,
+    .project-card,
     .flying-title > *,
     .flying-image,
     .hours-block > *,
@@ -718,11 +758,11 @@
         padding-bottom: 48px;
     }
 
-    .education-grid {
+    .project-grid {
         grid-template-columns: 1fr;
     }
 
-    .education-card {
+    .project-card {
         min-height: 420px;
     }
 

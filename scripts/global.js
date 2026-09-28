@@ -103,7 +103,7 @@ if ("IntersectionObserver" in window) {
 			observer.unobserve(entry.target);
 		});
 	}, {
-		threshold: 0.30
+		threshold: 0.20
 	});
 
 	animatedSections.forEach((section) => sectionObserver.observe(section));
