@@ -169,6 +169,10 @@
 .is-visible .photo-tile:nth-child(17) { animation-delay: 1.04s; }
 .is-visible .photo-tile:nth-child(18) { animation-delay: 1.10s; }
 .is-visible .photo-tile:nth-child(19) { animation-delay: 1.16s; }
+.is-visible .photo-tile:nth-child(20) { animation-delay: 1.22s; }
+.is-visible .photo-tile:nth-child(21) { animation-delay: 1.28s; }
+.is-visible .photo-tile:nth-child(22) { animation-delay: 1.34s; }
+.is-visible .photo-tile:nth-child(23) { animation-delay: 1.40s; }
 
 .timeline-item > *,
 .project-card,
